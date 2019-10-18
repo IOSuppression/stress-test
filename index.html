@@ -17,6 +17,8 @@
 <svg class="all loading-light hidden" xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: none;"><path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#000" transform="rotate(90.3251 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/></path></svg>
 <svg class="all loading slide-in-blurred-bottom" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: none;"><path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#ffffff" transform="rotate(109.578 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/></path></svg>
 
+<h1 class="all basic2 hidden" style="text-align:center;vertical-align:center;">Stress test in progress...</h1>
+
 <div class="tester1 home all hidden" id="home">
 <h1>IO's Stress Tester</h1>
 <p>Welcome, would you like to perform a basic or advanced test?</p>
@@ -79,6 +81,7 @@ window.onerror = function(error) {
     } else {
         $.notify("An error has occoured!");
     }
+    goto("home", false);
   };
 debugtool.registerListener(function(isto) {
         if (typeof isto != "boolean") {

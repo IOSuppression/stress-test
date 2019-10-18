@@ -23,8 +23,44 @@ function goto(gotostring, isdark) {
     , 410);
 }
 
-function basictest() {
-    
+function basictest(numbe) {
+    goto("basic2", true);
+    setTimeout(function() {
+        const now = new Date();
+        const secondsSinceEpoch = Math.round(now.getTime() / 1000)  ;
+        var prettyplis = 0;
+        var skip = false;
+        switch (numbe) {
+            case 1:
+               do {console.log("Stressing!"); prettyplis++}  while(prettyplis < 1000)
+               break;
+            case 2:
+                do {console.log("Stressing!"); prettyplis++}  while(prettyplis < 10000)
+                break;
+            case 3:
+                do {console.log("Stressing!"); prettyplis++}  while(prettyplis < 100000)
+                break;
+            case 4:
+                do {console.log("Stressing!"); prettyplis++}  while(prettyplis < 1000000)
+                break;
+            default:
+                $.notify("Invalid operation! What are you trying to do here!? >:(");
+                skip = true;
+                break;
+        }
+        if (!skip) {
+            const now2 = new Date();
+            const secondsSinceEpoch2 = Math.round(now.getTime() / 1000) ;
+
+            var finish = now2.getTime() - now.getTime();
+
+            $.notify(
+                "The stress test has been completed! It took " + finish.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") + "ms to finish.", 
+                { position:"bottom-right", style: "io-success" }
+            );
+        }
+        goto("home", false);
+    }, 1000)
 }
 
 setTimeout(
