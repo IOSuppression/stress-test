@@ -28,8 +28,34 @@
 </div>
 
 <div class="advanced1 hidden all" id="home">
-<h1>You've reached dead end</h1>
-<p>Now you are at zen.</p>
+<h1>First of all, what do you want the stress system to output?</h1>
+<input type="text" id="lname" name="lastname" placeholder="Something funny" value="IOSuppression Stress Tester is currently Running - (4-10182019)">
+<button class="backbtn" onclick="goto('home', false)">&larr; Back</button><button class="backbtn" onclick="check('lname', 'advanced2', true)">Next &rarr;</button>
+</div>
+
+<div class="advanced2 hidden all" id="home">
+        <h1>How much stress would you like to put on your device?</h1>
+        <input type="number" id="iocool" name="lastname" placeholder="1" value="1" min="1" oninput="this.value = Math.abs(this.value)">
+        <button class="backbtn" onclick="goto('advanced1', true)">&larr; Back</button><button class="backbtn" onclick="checkNum('iocool', 'advanced3', true)">Next &rarr;</button>
+</div>
+
+<div class="advanced3 hidden all" id="home">
+        <h1>How many times would you like to run the system?</h1>
+        <input type="number" id="lname2" name="lastname" placeholder="1" value="1" min="1" oninput="this.value = Math.abs(this.value); if (Math.abs(this.value) === 0) {this.value=1}">
+        <button class="backbtn" onclick="goto('advanced2', true)">&larr; Back</button><button class="backbtn" onclick="checkNum('lname2', 'advanced4', true)">Next &rarr;</button>
+</div>
+<div class="advanced4 hidden all" id="home">
+        <h1>Would you like this to be in a dedicated console?</h1>
+        <button class="backbtn" onclick="goto('advanced3', true)">&larr; Back</button>
+        <button class="backbtn" onclick="var virtualConsole = true;  goto('advanced5', true)">&#x2713; Yes</button>
+        <button class="backbtn" onclick="var virtualConsole = false;  goto('advanced5', true)">&#x1F6C7; No</button>
+</div>
+
+<div class="advanced5 hidden all" id="home">
+        <h1>Would you like there to be a 5 second intermission between runs (if there is more than 1)?</h1>
+        <button class="backbtn" onclick="goto('advanced4', true)">&larr; Back</button>
+        <button class="backbtn" onclick="var intermissionEnabled = true;  goto('advanced6', true); updateInfo()">&#x2713; Yes</button>
+        <button class="backbtn" onclick="var intermissionEnabled = false;  goto('advanced6', true); updateInfo()">&#x1F6C7; No</button>
 </div>
 
 <div class="basic1 hidden all" id="home">

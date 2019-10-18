@@ -69,5 +69,51 @@ setTimeout(
     }
     , 2000);
 
+// advanced stuff incoming
+
+var virtualConsole = false;
+var intermissionEnabled = false;
+
+function check(thing, goto2, isdark) {
+    if ($("#" + thing).val().trim() != "") {
+        goto(goto2, isdark)
+    } else {
+        $.notify(
+            "This cannot be empty!", 
+            { position:"bottom-right", style: "io-bad" }
+        );
+    }
+}
+
+var decimalWarning = false;
+
+function checkNum(thing, goto2, isdark) {
+    if ($("#" + thing).val().trim() != "") {
+        if (parseInt($("#" + thing).val()) === 0) {
+            $.notify(
+                "Your input has now been set to 1 as it was 0.", 
+                { position:"bottom-right", style: "io-warning" }
+            );
+            document.getElementById(thing).value = 1;
+        }
+        if (parseInt($("#" + thing).val()) != $("#" + thing).val()) {
+            $.notify(
+                "Your input has been converted into an integer.", 
+                { position:"bottom-right", style: "io-info" }
+            );
+            document.getElementById(thing).value = parseInt($("#" + thing).val());
+        }
+        goto(goto2, isdark)
+    } else {
+        $.notify(
+            "This cannot be empty!", 
+            { position:"bottom-right", style: "io-bad" }
+        );
+    }
+}
+
+function updateInfo() {
+    
+}
 
 
