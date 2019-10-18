@@ -42,20 +42,63 @@
 <div class="advanced3 hidden all" id="home">
         <h1>How many times would you like to run the system?</h1>
         <input type="number" id="lname2" name="lastname" placeholder="1" value="1" min="1" oninput="this.value = Math.abs(this.value); if (Math.abs(this.value) === 0) {this.value=1}">
-        <button class="backbtn" onclick="goto('advanced2', true)">&larr; Back</button><button class="backbtn" onclick="checkNum('lname2', 'advanced4', true)">Next &rarr;</button>
+        <button class="backbtn" onclick="goto('advanced2', true)">&larr; Back</button><button class="backbtn" onclick="checkNum('lname2', 'advanced6', true)">Next &rarr;</button>
 </div>
 <div class="advanced4 hidden all" id="home">
         <h1>Would you like this to be in a dedicated console?</h1>
         <button class="backbtn" onclick="goto('advanced3', true)">&larr; Back</button>
-        <button class="backbtn" onclick="var virtualConsole = true;  goto('advanced5', true)">&#x2713; Yes</button>
-        <button class="backbtn" onclick="var virtualConsole = false;  goto('advanced5', true)">&#x1F6C7; No</button>
+        <button class="backbtn" onclick="virtualConsole = true;  goto('advanced6', true)">&#x2713; Yes</button>
+        <button class="backbtn" onclick="virtualConsole = false;  goto('advanced6', true)">&#x1F6C7; No</button>
 </div>
 
 <div class="advanced5 hidden all" id="home">
         <h1>Would you like there to be a 5 second intermission between runs (if there is more than 1)?</h1>
         <button class="backbtn" onclick="goto('advanced4', true)">&larr; Back</button>
-        <button class="backbtn" onclick="var intermissionEnabled = true;  goto('advanced6', true); updateInfo()">&#x2713; Yes</button>
-        <button class="backbtn" onclick="var intermissionEnabled = false;  goto('advanced6', true); updateInfo()">&#x1F6C7; No</button>
+        <button class="backbtn" onclick="intermissionEnabled = true;  goto('advanced6', true);">&#x2713; Yes</button>
+        <button class="backbtn" onclick="intermissionEnabled = false;  goto('advanced6', true);">&#x1F6C7; No</button>
+</div>
+
+<div class="advanced_runwtable hidden all" id="home">
+        <h1>Running stress test <b id="thingthing"></b></h1>
+        <p style="display: block;" id="inter1">Please wait...</p>
+        <table id="advancedtable" style="width:100%;" style="display:none;">
+                <tr>
+                        <th>Run #</th>
+                        <th>Time between runs</th>
+                </tr>
+        </table>
+        <button class="backbtn" id="home1" style="display:none;" onclick="goto('home', false); clearEverything()">&larr; Home</button>
+</div>
+
+<div class="advanced_runwconsole hidden all" id="home">
+                <h1>Stress Test Log</h1>
+                <p style="display: block;" id="inter2">Please wait...</p>
+                <p style="display: none;" id="inter3">Finished!</p>
+                <button class="backbtn" id="home2" style="display:none;" onclick="goto('home', false); clearEverything()">&larr; Home</button>
+                <table id="advancedtable2" style="width:100%;" style="display:none;">
+                         <tr>
+                                <th>Run #</th>
+                                <th>Time between runs</th>
+                         </tr>
+                </table>
+                <div class="virtualconsole" id="virtualconsole">
+                </div>
+        </div>
+
+<div class="advanced6 hidden all" id="home">
+        <h1>Let's review.</h1>
+        <p>Calm before the storm...</p>
+        <i>Output Message: </i><b id="check-a">Bitch</b>
+        <br/>
+        <i>Stress amount: </i><b id="check-b">0</b>
+        <br/>
+        <i>Times to run for: </i><b id="check-c">0</b>
+        <br/>
+        <i style="display:none;">Virtual console: </i><b style="display:none;" id="check-d">No</b>
+        <br/><br/><br/>
+        <button class="ready" onclick="advancedTest()">Start!</button>
+        <br/>
+        <button class="backbtn" onclick="goto('advanced5', true)">&larr; Back</button><button class="backbtn" onclick="goto('advanced1', true); clearEverything();">&#x21BB; Redo</button>
 </div>
 
 <div class="basic1 hidden all" id="home">

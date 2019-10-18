@@ -21,6 +21,9 @@ function goto(gotostring, isdark) {
     	$("." + current).removeClass("hidden");
     }
     , 410);
+    if (gotostring === "advanced6") {
+        updateInfo();
+    }
 }
 
 function basictest(numbe) {
@@ -113,7 +116,101 @@ function checkNum(thing, goto2, isdark) {
 }
 
 function updateInfo() {
+    if (virtualConsole === true) {
+        $("#check-d").html("Yes");
+    } else {
+        $("#check-d").html("No");
+    }
+    $("#check-a").html($("#lname").val());
+    $("#check-b").html($("#iocool").val());
+    $("#check-c").html($("#lname2").val());
+}
+
+function advancedTest() {
+    $("#advancedtable").html("<tr><th>Run #</th><th>Run Time</th></tr>")
+    $("#advancedtable2").html("<tr><th>Run #</th><th>Run Time</th></tr>")
+    
+    if (virtualConsole) {
+        goto("advanced_runwconsole", true); $("#advancedtable2").css("display", "none"); $("#inter2").css("display", "block"); $("#inter3").css("display", "none"); $("#home2").css("display", "none");  setTimeout(function() {
+            var runs = [];
+            var totaltime = 0;
+            
+    
+            do {
+                const p1 = new Date().getTime();
+                var i = 0;
+                do {
+                    $("#virtualconsole").html( $("#virtualconsole").html() + "<p>" + $("#lname").val() + "</p>" );
+    
+                    i++;
+                }
+    
+                while(i < $("#iocool").val());
+    
+                const p2 = new Date().getTime();
+    
+                var runspush = p2 - p1;
+                runs.push(runspush)
+            }
+    
+            while(runs.length < $("#lname2").val())
+    
+            var beepboop = 1;
+            for (v of runs) {
+                $("#advancedtable").html( $("#advancedtable").html() + "<tr> <td> " + beepboop + " </td> <td>" + v + "ms</td> </tr>")
+                totaltime = totaltime + v; // beep boop
+                beepboop++;
+            }
+            $("#advancedtable2").html( $("#advancedtable").html() + "<tr> <td> Total </td> <td>" + totaltime + "ms</td> </tr>")
+            $("#inter2").css("display", "none"); 
+            $("#advancedtable2").css("display", "block");
+            $("#home2").css("display", "block");
+            $("#inter3").css("display", "block"); 
+        }, 1000)
+    } else {
+        goto("advanced_runwtable", true); $("#advancedtable").css("display", "none"); $("#inter1").css("display", "block"); $("#home1").css("display", "none");  setTimeout(function() {
+        var runs = [];
+        var totaltime = 0;
+        
+
+        do {
+            const p1 = new Date().getTime();
+            var i = 0;
+            do {
+                console.log($("#lname").val());
+
+                i++;
+            }
+
+            while(i < $("#iocool").val());
+
+            const p2 = new Date().getTime();
+
+            var runspush = p2 - p1;
+            runs.push(runspush)
+        }
+
+        while(runs.length < $("#lname2").val())
+
+        var beepboop = 1;
+        for (v of runs) {
+            $("#advancedtable").html( $("#advancedtable").html() + "<tr> <td> " + beepboop + " </td> <td>" + v + "ms</td> </tr>")
+            totaltime = totaltime + v; // beep boop
+            beepboop++;
+        }
+        $("#advancedtable").html( $("#advancedtable").html() + "<tr> <td> Total </td> <td>" + totaltime + "ms</td> </tr>")
+        $("#inter1").css("display", "none"); 
+        $("#advancedtable").css("display", "block");
+        $("#home1").css("display", "block");
+    }, 1000)}
     
 }
 
+function clearEverything() {
+    virtualConsole = false;
+    intermissionEnabled = false;
+    document.getElementById("lname2").value = "1";
+    document.getElementById("iocool").value = "1";
+    document.getElementById("lname").value = "IOSuppression Stress Tester is currently Running - (4-10182019)";
+}
 
